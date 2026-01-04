@@ -209,7 +209,7 @@ const AnimatedHero = () => {
               >
                 <Link 
                   to={slides[current].theme === 'services' ? "/services" : 
-                       slides[current].theme === 'bridal' ? "/bridal" : 
+                       slides[current].theme === 'bridal' ? "/services" : 
                        slides[current].theme === 'academy' ? "/academy" : "/services"}
                   className="bg-[#D14D72] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wider rounded-lg hover:bg-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-2"
                 >

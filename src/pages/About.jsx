@@ -2,7 +2,7 @@ import React from 'react';
 import SectionTitle from '../components/common/SectionTitle';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
-
+import img from  '../assets/Hero_section/image2.png'
 const About = () => {
   const teamMembers = [
     {
@@ -37,25 +37,25 @@ const About = () => {
 
   const values = [
     {
-      icon: '⭐',
+      icon: '',
       title: 'Excellence',
       description: 'We strive for perfection in every service we provide.',
       color: 'bg-pink-900/20 border-pink-900/30'
     },
     {
-      icon: '❤️',
+      icon: '',
       title: 'Passion',
       description: 'We love what we do and it shows in our work.',
       color: 'bg-black/20 border-black/30'
     },
     {
-      icon: '🤝',
+      icon: '',
       title: 'Trust',
       description: 'We build long-lasting relationships with our clients.',
       color: 'bg-pink-900/20 border-pink-900/30'
     },
     {
-      icon: '✨',
+      icon: '',
       title: 'Innovation',
       description: 'We stay updated with the latest beauty trends and techniques.',
       color: 'bg-black/20 border-black/30'
@@ -103,7 +103,7 @@ const About = () => {
             <div className="relative group">
               <div className="relative overflow-hidden rounded-xl border border-pink-900/50">
                 <img 
-                  src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800" 
+                src ={img}
                   alt="
 Aura Studio Interior"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
@@ -113,12 +113,12 @@ Aura Studio Interior"
             
             <div>
               <h3 className="text-3xl font-bold mb-8 text-white">
-                Transforming Beauty Since <span className="text-pink-400">2008</span>
+                Transforming Beauty Since <span className="text-pink-400">2020</span>
               </h3>
               
               <div className="space-y-6 text-pink-100">
                 <p className="leading-relaxed">
-                  Founded by Sophia Johnson, a passionate beauty expert with over 15 years of experience, 
+                  Founded by Nikita Changole, a passionate beauty expert with over 07 years of experience, 
                   
 Aura Studio began as a small salon with a big dream: to revolutionize the beauty industry.
                 </p>
@@ -136,15 +136,15 @@ Aura Studio began as a small salon with a big dream: to revolutionize the beauty
               
               <div className="grid grid-cols-3 gap-6 mt-12">
                 <div className="text-center p-6 bg-gradient-to-b from-pink-900/30 to-black rounded-xl border border-pink-900/30">
-                  <div className="text-3xl font-bold text-pink-400">15+</div>
+                  <div className="text-3xl font-bold text-pink-400">07+</div>
                   <div className="text-sm text-pink-200 mt-2">Years Experience</div>
                 </div>
                 <div className="text-center p-6 bg-gradient-to-b from-purple-900/30 to-black rounded-xl border border-purple-900/30">
-                  <div className="text-3xl font-bold text-pink-400">5000+</div>
+                  <div className="text-3xl font-bold text-pink-400">100+</div>
                   <div className="text-sm text-purple-200 mt-2">Happy Clients</div>
                 </div>
                 <div className="text-center p-6 bg-gradient-to-b from-pink-800/30 to-black rounded-xl border border-pink-800/30">
-                  <div className="text-3xl font-bold text-pink-300">50+</div>
+                  <div className="text-3xl font-bold text-pink-300">5+</div>
                   <div className="text-sm text-pink-200 mt-2">Awards Won</div>
                 </div>
               </div>
@@ -179,9 +179,8 @@ Aura Studio began as a small salon with a big dream: to revolutionize the beauty
           </div>
         </div>
       </section>
-
       {/* Our Team */}
-      <section className="py-20 bg-black">
+      {/* <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
 
           <SectionTitle 
@@ -220,7 +219,7 @@ Aura Studio began as a small salon with a big dream: to revolutionize the beauty
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">
@@ -242,7 +241,7 @@ Aura Studio  Difference</span>
             >
               <Link to="/services" className="flex items-center gap-3">
                 <span>View Services</span>
-                <span className="text-lg">✨</span>
+                <span className="text-lg"></span>
               </Link>
             </Button>
             <Button 
