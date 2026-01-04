@@ -14,10 +14,10 @@ const SectionTitle = ({ title, subtitle, align = 'center' }) => {
           {subtitle}
         </span>
       </div>
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
         {title}
       </h2>
-      <div className="w-20 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full"></div>
+      {/* <div className="w-20 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full"></div> */}
     </div>
   );
 };

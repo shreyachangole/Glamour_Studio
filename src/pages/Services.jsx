@@ -1,66 +1,78 @@
-import React, { useState } from 'react';
-import SectionTitle from '../components/common/SectionTitle';
-import ServiceCard from '../components/services/ServiceCard';
-import { servicesData } from '../data/servicesData';
-import Button from '../components/common/Button';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ServiceCard from "../components/services/ServiceCard";
+import { servicesData } from "../data/servicesData";
+import { Link } from "react-router-dom";
 
 const Services = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const serviceCategories = [
-    { id: 'all', label: 'All Services' },
-    { id: 'hair-styling', label: 'Hair Services' },
-    { id: 'makeup', label: 'Makeup' },
-    { id: 'facial', label: 'Skin Care' },
-    { id: 'manicure-pedicure', label: 'Nail Care' },
-    { id: 'waxing', label: 'Hair Removal' },
-    { id: 'bridal-packages', label: 'Bridal' }
+    { id: "all", label: "All Services" },
+    // { id: 'hair-styling', label: 'Hair Services' },
+    // { id: 'makeup', label: 'Makeup' },
+    // { id: 'facial', label: 'Skin Care' },
+    // { id: 'manicure-pedicure', label: 'Nail Care' },
+    // { id: 'waxing', label: 'Hair Removal' },
+    // { id: 'bridal-packages', label: 'Bridal' }
   ];
 
-  const filteredServices = selectedCategory === 'all' 
-    ? servicesData 
-    : servicesData.filter(service => service.id === selectedCategory);
+  const filteredServices =
+    selectedCategory === "all"
+      ? servicesData
+      : servicesData.filter(
+          (service) => service.category === selectedCategory
+        );
 
   return (
-    <div className="services-page">
+    <div className="services-page bg-neutral-950 text-white min-h-screen selection:bg-pink-500/30">
       {/* Hero Section */}
-      <div className="relative py-20 bg-gradient-to-r from-beauty-pink-50 to-beauty-purple-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Premium Beauty <span className="text-beauty-pink-600">Services</span>
+      <div className="relative py-32 bg-neutral-950 overflow-hidden">
+        <motion.div
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-24 -left-24 w-96 h-96 bg-pink-600/10 rounded-full blur-[120px]"
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none tracking-tighter">
+              ELITE{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-400">
+                SERVICES
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Discover our wide range of professional beauty services designed to enhance your 
-              natural beauty and boost your confidence.
+            <p className="text-xl text-neutral-400 mb-10 leading-relaxed max-w-xl">
+              Where high-fashion meets holistic wellness. Our master artisans
+              curate treatments designed for the modern icon.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="large">
-                <i className="fas fa-calendar-alt mr-2"></i>
-                Book Appointment
-              </Button>
-              <Button variant="outline" size="large">
-                <i className="fas fa-phone mr-2"></i>
-                Call: (123) 456-7890
-              </Button>
+
+            <div className="flex flex-wrap gap-6">
+              <button className="px-10 py-4 bg-pink-600 hover:bg-pink-500 text-white font-black rounded-full transition-all transform hover:scale-105 hover:shadow-[0_0_30px_rgba(219,39,119,0.5)]">
+                BOOK EXPERIENCE
+              </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Service Categories */}
-      <section className="py-12 bg-white border-b">
+      {/* Category Filter */}
+      <section className="py-6 bg-neutral-950/80 sticky top-0 z-50 backdrop-blur-xl border-b border-white/5">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+          <div className="flex flex-wrap justify-center gap-2">
             {serviceCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-beauty-pink-500 to-beauty-purple-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? "bg-white text-black"
+                    : "bg-neutral-900 text-neutral-500 hover:bg-neutral-800 hover:text-white"
                 }`}
               >
                 {category.label}
@@ -71,198 +83,140 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-neutral-950">
         <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Our Services"
-            subtitle="Professional Beauty Solutions"
-          />
-          
-          {filteredServices.length === 0 ? (
-            <div className="text-center py-12">
-              <i className="fas fa-spa text-4xl text-gray-300 mb-4"></i>
-              <p className="text-gray-500 text-lg">No services found in this category.</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredServices.map((service) => (
-                <ServiceCard 
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedCategory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {filteredServices.map((service, index) => (
+                <motion.div
                   key={service.id}
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  details={service.details}
-                  link={`/services/${service.id}`}
-                />
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group relative bg-neutral-900/50 border border-white/5 p-8 rounded-[2rem] hover:bg-neutral-900 transition-all duration-500 hover:border-pink-500/50"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
+
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-6 text-pink-500 group-hover:scale-110 transition-transform duration-500 inline-block">
+                      <i className={`fas ${service.icon}`}></i>
+                    </div>
+
+                    <h3 className="text-2xl font-bold mb-4 tracking-tight">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-neutral-500 mb-8 line-clamp-2 group-hover:text-neutral-300 transition-colors">
+                      {service.description}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                      <span className="text-pink-500 font-black tracking-widest text-sm uppercase">
+                        Signature
+                      </span>
+                      {/* <Link
+                        to={`/services/${service.id}`}
+                        className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-pink-600 transition-all"
+                      >
+                        <i className="fas fa-arrow-right text-sm"></i>
+                      </Link> */}
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </div>
-          )}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
-      {/* Service Packages */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Special Packages"
-            subtitle="Best Value Deals"
-          />
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 transition-transform duration-300">
-              <div className="text-beauty-pink-600 text-4xl mb-4">✨</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Silver Package</h3>
-              <div className="text-3xl font-bold text-gray-800 mb-6">$199<span className="text-lg text-gray-500">/month</span></div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>2 Hair Styling Sessions</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>1 Facial Treatment</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>Manicure & Pedicure</span>
-                </li>
-              </ul>
-              <Button variant="primary" className="w-full">
-                Choose Package
-              </Button>
+      {/* Membership Section */}
+<section className="py-28 bg-neutral-900/40">
+  <div className="container mx-auto px-4">
+    <div className="grid md:grid-cols-3 gap-10">
+      {[
+        { type: "Silver", price: "499", icon: "" },
+        { type: "Gold", price: "899", icon: "", popular: true },
+        { type: "Platinum", price: "1599", icon: "" },
+      ].map((plan) => (
+        <motion.div
+          key={plan.type}
+          whileHover={{ y: -10, scale: 1.02 }}
+          className={`p-12 rounded-[3rem] border backdrop-blur-xl ${
+            plan.popular
+              ? "border-pink-600 bg-neutral-950 shadow-2xl shadow-pink-500/20 scale-105"
+              : "border-white/10 bg-neutral-900/60"
+          }`}
+        >
+          <div className="text-center">
+            <span className="text-5xl mb-6 block">{plan.icon}</span>
+
+            <h3 className="text-sm font-black uppercase tracking-[0.35em] text-neutral-400 mb-3">
+              {plan.type} Membership
+            </h3>
+
+            <div className="text-6xl font-black mb-10 text-white">
+              ${plan.price}
             </div>
-            
-            <div className="bg-gradient-to-br from-beauty-pink-500 to-beauty-purple-600 rounded-2xl shadow-xl p-8 text-center transform hover:-translate-y-2 transition-transform duration-300 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-bold">
-                  MOST POPULAR
-                </span>
-              </div>
-              <div className="text-white text-4xl mb-4">🌟</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Gold Package</h3>
-              <div className="text-3xl font-bold text-white mb-6">$399<span className="text-lg text-white/80">/month</span></div>
-              <ul className="space-y-3 mb-8 text-white/90">
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-white mr-2"></i>
-                  <span>Unlimited Hair Services</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-white mr-2"></i>
-                  <span>4 Facial Treatments</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-white mr-2"></i>
-                  <span>Full Body Waxing</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-white mr-2"></i>
-                  <span>Free Products</span>
-                </li>
-              </ul>
-              <Button variant="secondary" className="w-full bg-white text-beauty-pink-600 hover:bg-gray-100">
-                Choose Package
-              </Button>
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 transition-transform duration-300">
-              <div className="text-beauty-purple-600 text-4xl mb-4">💎</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Platinum Package</h3>
-              <div className="text-3xl font-bold text-gray-800 mb-6">$699<span className="text-lg text-gray-500">/month</span></div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>All Services Unlimited</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>Personal Beauty Consultant</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>Priority Booking</span>
-                </li>
-                <li className="flex items-center justify-center">
-                  <i className="fas fa-check text-green-500 mr-2"></i>
-                  <span>Free Home Service</span>
-                </li>
-              </ul>
-              <Button variant="primary" className="w-full">
-                Choose Package
-              </Button>
-            </div>
+
+            <ul className="text-neutral-300 space-y-5 mb-12 text-sm">
+              <li>Luxury One-on-One Consultation</li>
+              <li>Priority Scheduling (Front of the Queue)</li>
+              <li>Complimentary Premium Beverages</li>
+              <li>Exclusive Access to Elite Events</li>
+              <li>VIP Lounge Access</li>
+              {plan.type === "Platinum" && (
+                <li className="text-pink-400">Personal Stylist Concierge</li>
+              )}
+            </ul>
+
+           <Link
+  to="/contact"
+  className={`block text-center w-full py-5 rounded-2xl text-lg font-black transition-all ${
+    plan.popular
+      ? "bg-pink-600 text-white hover:bg-pink-500"
+      : "bg-white text-black hover:bg-pink-500 hover:text-white"
+  }`}
+>
+  JOIN THE ELITE
+</Link>
+
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Why Choose Glamour Studio?"
-            subtitle="The Beauty Difference"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-beauty-pink-100 rounded-full flex items-center justify-center text-beauty-pink-600 text-2xl mb-4">
-                <i className="fas fa-award"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Certified Experts</h4>
-              <p className="text-gray-600">All our beauty professionals are certified and continuously trained.</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-beauty-purple-100 rounded-full flex items-center justify-center text-beauty-purple-600 text-2xl mb-4">
-                <i className="fas fa-star"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Premium Products</h4>
-              <p className="text-gray-600">We use only top-quality, professional-grade beauty products.</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-2xl mb-4">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Hygiene First</h4>
-              <p className="text-gray-600">Sterilized equipment and strict hygiene protocols for your safety.</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl mb-4">
-                <i className="fas fa-heart"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Personalized Care</h4>
-              <p className="text-gray-600">Customized treatments tailored to your unique beauty needs.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-beauty-pink-600 to-beauty-purple-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready for Your Beauty Transformation?
+      {/* Final CTA */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="py-32 bg-pink-600 text-center relative overflow-hidden"
+      >
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase">
+            Ready for your <br /> transformation?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Book your appointment today and experience the Glamour Studio difference!
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="secondary" size="large" className="bg-white text-beauty-pink-600 hover:bg-gray-100">
-              <Link to="/contact">
-                <i className="fas fa-calendar-check mr-2"></i>
-                Book Appointment
-              </Link>
-            </Button>
-            <Button variant="outline" size="large" className="border-white text-white hover:bg-white/10">
-              <Link to="/portfolio">
-                <i className="fas fa-images mr-2"></i>
-                View Our Work
-              </Link>
-            </Button>
-          </div>
+
+          <Link
+            to="/contact"
+            className="inline-block px-12 py-5 bg-black text-white font-black rounded-full hover:scale-110 transition-transform"
+          >
+            SECURE YOUR SLOT
+          </Link>
         </div>
-      </section>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/20 rounded-full" />
+      </motion.section>
     </div>
   );
 };

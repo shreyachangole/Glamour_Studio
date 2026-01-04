@@ -96,194 +96,119 @@ const Academy = () => {
   ];
 
   return (
-    <div className="academy-page">
+    <div className="academy-page bg-neutral-950 text-white min-h-screen">
       {/* Hero Section */}
-      <div className="relative py-20 bg-gradient-to-r from-beauty-pink-50 to-beauty-purple-50">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Glamour <span className="text-beauty-pink-600">Academy</span>
+      <div className="relative py-24 bg-neutral-900 overflow-hidden">
+        {/* Abstract Background Accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-pink-600/10 rounded-full blur-[120px] -mr-40 -mt-40"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] -ml-40 -mb-40"></div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+          Aura <span className="text-pink-500">Academy</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Transform your passion for beauty into a professional career. 
-            Learn from industry experts and gain hands-on experience in our state-of-the-art academy.
+          <p className="text-xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Transform your passion into a high-end career. Master the art of beauty in our premium, luxury-grade studio environment.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="primary" size="large">
-              <i className="fas fa-file-alt mr-2"></i>
-              Download Brochure
-            </Button>
-            <Button variant="outline" size="large">
-              <i className="fas fa-calendar mr-2"></i>
-              Schedule Tour
-            </Button>
+          <div className="flex flex-wrap justify-center gap-6">
+            <button className="px-8 py-4 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(219,39,119,0.4)]">
+              <i className="fas fa-file-alt mr-2"></i> Download Brochure
+            </button>
+            <button className="px-8 py-4 bg-transparent border-2 border-white/20 hover:border-pink-500 text-white font-bold rounded-full transition-all">
+              <i className="fas fa-calendar mr-2"></i> Schedule Tour
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Academy Stats */}
-      <section className="py-12 bg-white">
+      {/* Stats - Dark Contrast */}
+      <section className="py-12 bg-neutral-950 border-y border-white/5">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6">
-              <div className="text-3xl font-bold text-beauty-pink-600 mb-2">500+</div>
-              <div className="text-gray-600">Graduates</div>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-3xl font-bold text-beauty-purple-600 mb-2">15+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-3xl font-bold text-pink-600 mb-2">98%</div>
-              <div className="text-gray-600">Placement Rate</div>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-3xl font-bold text-purple-600 mb-2">10+</div>
-              <div className="text-gray-600">Certifications</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { label: 'Graduates', val: '500+', color: 'text-pink-500' },
+              { label: 'Experience', val: '15+ Yrs', color: 'text-white' },
+              { label: 'Placement', val: '98%', color: 'text-pink-500' },
+              { label: 'Certifications', val: '10+', color: 'text-white' }
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className={`text-4xl font-bold ${stat.color} mb-1`}>{stat.val}</div>
+                <div className="text-neutral-500 uppercase tracking-widest text-xs font-semibold">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Course Categories */}
-      <section className="py-12 bg-gray-50 border-b">
+      {/* Filter Section - Minimalist Black */}
+      <section className="py-10 bg-neutral-950 sticky top-0 z-40 backdrop-blur-md bg-neutral-950/80">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+          <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-beauty-pink-500 to-beauty-purple-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow'
+                    ? 'bg-pink-600 text-white shadow-[0_0_15px_rgba(219,39,119,0.5)]'
+                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-white/10'
                 }`}
               >
-                {category === 'all' ? 'All Courses' : category.charAt(0).toUpperCase() + category.slice(1)}
+                {category}
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Courses Grid */}
-      <section className="py-16 bg-white">
+      {/* Courses Grid - Cards with Glass Effect */}
+      <section className="py-20 bg-neutral-950">
         <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Our Courses"
-            subtitle="Professional Beauty Training"
-          />
+          <div className="mb-16 text-center">
+             <h2 className="text-3xl font-bold mb-2">Signature Courses</h2>
+             <div className="h-1 w-20 bg-pink-600 mx-auto"></div>
+          </div>
           
-          {filteredCourses.length === 0 ? (
-            <div className="text-center py-12">
-              <i className="fas fa-graduation-cap text-4xl text-gray-300 mb-4"></i>
-              <p className="text-gray-500 text-lg">No courses found in this category.</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredCourses.map((course) => (
-                <div 
-                  key={course.id}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={course.image} 
-                      alt={course.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                        {course.level}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">{course.title}</h3>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <i className="fas fa-clock mr-2"></i>
-                          <span>{course.duration}</span>
-                        </div>
-                      </div>
-                      <div className="text-2xl font-bold text-beauty-pink-600">{course.price}</div>
-                    </div>
-                    
-                    <ul className="space-y-2 mb-6">
-                      {course.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm text-gray-600">
-                          <i className="fas fa-check text-beauty-pink-500 mr-2 text-xs"></i>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <div className="flex gap-3">
-                      <Button variant="primary" className="flex-1">
-                        <i className="fas fa-info-circle mr-2"></i>
-                        Details
-                      </Button>
-                      <Button variant="outline" className="flex-1">
-                        <i className="fas fa-calendar mr-2"></i>
-                        Enroll
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Instructors */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Meet Our Instructors"
-            subtitle="Industry Experts"
-          />
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {instructors.map((instructor, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {filteredCourses.map((course) => (
               <div 
-                key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden text-center group"
+                key={course.id}
+                className="group bg-neutral-900 border border-white/5 rounded-2xl overflow-hidden hover:border-pink-500/50 transition-all duration-500"
               >
-                <div className="relative h-64">
-                  <img 
-                    src={instructor.image} 
-                    alt={instructor.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-0 right-0">
-                      <div className="flex justify-center space-x-4">
-                        <a href="#" className="text-white hover:text-beauty-pink-300">
-                          <i className="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" className="text-white hover:text-beauty-pink-300">
-                          <i className="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a href="#" className="text-white hover:text-beauty-pink-300">
-                          <i className="fab fa-twitter text-xl"></i>
-                        </a>
-                      </div>
-                    </div>
+                <div className="relative h-64 overflow-hidden">
+                  <img src={course.image} alt={course.title} className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent"></div>
+                  <div className="absolute top-4 left-4 bg-pink-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+                    {course.level}
                   </div>
                 </div>
                 
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">{instructor.name}</h4>
-                  <p className="text-beauty-pink-600 mb-3">{instructor.specialization}</p>
-                  <div className="text-sm text-gray-500 mb-4">
-                    <i className="fas fa-briefcase mr-2"></i>
-                    {instructor.experience} experience
+                <div className="p-8">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold group-hover:text-pink-500 transition-colors">{course.title}</h3>
+                    <span className="text-xl font-light text-pink-500">{course.price}</span>
                   </div>
-                  <p className="text-gray-600 text-sm">
-                    Passionate educator dedicated to mentoring the next generation of beauty professionals.
-                  </p>
+                  
+                  <div className="flex items-center text-neutral-500 text-sm mb-6">
+                    <i className="far fa-clock mr-2 text-pink-500"></i> {course.duration}
+                  </div>
+                  
+                  <ul className="space-y-3 mb-8">
+                    {course.features.slice(0, 3).map((f, i) => (
+                      <li key={i} className="flex items-center text-sm text-neutral-400">
+                        <span className="w-1.5 h-1.5 bg-pink-600 rounded-full mr-3"></span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="flex gap-4">
+                    <button className="flex-1 py-3 bg-white text-black font-bold rounded-lg hover:bg-pink-500 hover:text-white transition-all text-sm uppercase">
+                      Enroll Now
+                    </button>
+                    <button className="p-3 border border-white/10 rounded-lg hover:bg-white/5 transition-all">
+                      <i className="fas fa-share-alt"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -291,83 +216,49 @@ const Academy = () => {
         </div>
       </section>
 
-      {/* Why Choose Our Academy */}
-      <section className="py-16 bg-white">
+      {/* Instructors - Grayscale to Color */}
+      <section className="py-20 bg-neutral-900/50">
         <div className="container mx-auto px-4">
-          <SectionTitle 
-            title="Why Choose Our Academy?"
-            subtitle="Advantages of Learning With Us"
-          />
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold">The Masters</h2>
+            <p className="text-neutral-500 mt-2">Learn from world-class industry icons</p>
+          </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-beauty-pink-100 rounded-full flex items-center justify-center text-beauty-pink-600 text-2xl mb-4">
-                <i className="fas fa-hands-helping"></i>
+          <div className="grid md:grid-cols-3 gap-12">
+            {instructors.map((ins, i) => (
+              <div key={i} className="text-center group">
+                <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-pink-600 transition-all duration-500">
+                  <img src={ins.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt={ins.name} />
+                </div>
+                <h4 className="text-xl font-bold mb-1">{ins.name}</h4>
+                <p className="text-pink-500 text-sm font-medium mb-2 uppercase tracking-widest">{ins.specialization}</p>
+                <p className="text-neutral-500 text-sm">{ins.experience} Experience</p>
               </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Hands-on Training</h4>
-              <p className="text-gray-600">Practical sessions with real clients and equipment</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-beauty-purple-100 rounded-full flex items-center justify-center text-beauty-purple-600 text-2xl mb-4">
-                <i className="fas fa-certificate"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Industry Certification</h4>
-              <p className="text-gray-600">Globally recognized certificates upon completion</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-2xl mb-4">
-                <i className="fas fa-briefcase"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Career Support</h4>
-              <p className="text-gray-600">Placement assistance and job referrals</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl mb-4">
-                <i className="fas fa-user-graduate"></i>
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Small Class Sizes</h4>
-              <p className="text-gray-600">Personalized attention and mentorship</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-beauty-pink-600 to-beauty-purple-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Start Your Beauty Career Today!
+      {/* Modern CTA - Neon Pink */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-pink-600"></div>
+        <div className="absolute inset-0 bg-neutral-950/90 backdrop-blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
+            Ready to Build Your <span className="text-pink-500 underline decoration-white/20">Empire?</span>
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Limited seats available for our upcoming batches. Enroll now to secure your spot!
+          <p className="text-neutral-400 mb-10 max-w-xl mx-auto">
+            Applications for the Spring 2026 intake are now open. 
+            Limited scholarship opportunities available for early applicants.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="secondary" size="large" className="bg-white text-beauty-pink-600 hover:bg-gray-100">
-              <i className="fas fa-file-signature mr-2"></i>
-              Apply Now
-            </Button>
-            <Button variant="outline" size="large" className="border-white text-white hover:bg-white/10">
-              <i className="fas fa-phone mr-2"></i>
-              Call for Inquiry
-            </Button>
-          </div>
-          
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <div className="text-2xl font-bold text-white mb-2">Early Bird Discount</div>
-              <div className="text-white/90">20% off if you enroll before next month</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <div className="text-2xl font-bold text-white mb-2">Flexible Payment</div>
-              <div className="text-white/90">Installment plans available</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <div className="text-2xl font-bold text-white mb-2">Free Workshop</div>
-              <div className="text-white/90">Join our free introductory workshop</div>
-            </div>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <button className="w-full sm:w-auto px-12 py-4 bg-white text-black font-black rounded-full hover:bg-pink-500 hover:text-white transition-all transform hover:-translate-y-1">
+              APPLY FOR ADMISSION
+            </button>
+            <button className="text-white font-bold flex items-center gap-2 group">
+              Speak with an advisor <i className="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </button>
           </div>
         </div>
       </section>

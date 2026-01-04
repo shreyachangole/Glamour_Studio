@@ -12,25 +12,23 @@ const Footer = () => {
     { label: 'ACADEMY', href: '/academy', path: '/academy' },
     { label: 'CONTACT', href: '/contact', path: '/contact' },
     { label: 'BOOKING', href: '/booking', path: '/booking' },
-    { label: 'TESTIMONIALS', href: '/testimonials', path: '/testimonials' },
+   
   ];
 
   const serviceLinks = [
-    { label: 'HAIR STYLING', href: '/services/hair-styling' },
-    { label: 'MAKEUP', href: '/services/makeup' },
-    { label: 'FACIALS', href: '/services/facial' },
-    { label: 'BRIDAL PACKAGES', href: '/services/bridal-packages' },
-    { label: 'SKIN CARE', href: '/services/skincare' },
-    { label: 'NAIL ART', href: '/services/nail-art' },
-    { label: 'SPA TREATMENTS', href: '/services/spa' },
+    { label: 'HAIR STYLING', href: '/services' },
+    { label: 'MAKEUP', href: '/services' },
+    { label: 'FACIALS', href: '/services' },
+    { label: 'BRIDAL PACKAGES', href: '/services' },
+    { label: 'SKIN CARE', href: '/services' },
+    { label: 'NAIL ART', href: '/services' },
+    { label: 'SPA TREATMENTS', href: '/services' },
     { label: 'PROFESSIONAL COURSES', href: '/academy' },
   ];
 
   const socialLinks = [
-    { Icon: Instagram, href: 'https://instagram.com/glamourstudio', label: 'Instagram' },
-    { Icon: Facebook, href: 'https://facebook.com/glamourstudio', label: 'Facebook' },
-    { Icon: Twitter, href: 'https://twitter.com/glamourstudio', label: 'Twitter' },
-    { Icon: Youtube, href: 'https://youtube.com/glamourstudio', label: 'YouTube' },
+    { Icon: Instagram, href: 'https://www.instagram.com/aura_unisex_salon_amravati/?hl=en', label: 'Instagram' },
+
   ];
 
   return (
@@ -49,10 +47,11 @@ const Footer = () => {
             >
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-[#D14D72] to-pink-400 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">G</span>
+                  <span className="text-white font-bold text-xl">A</span>
                 </div>
                 <h2 className="text-white text-2xl font-bold tracking-wider font-sans">
-                  Glamour Studio
+                 
+Aura Studio
                 </h2>
               </div>
               <p className="text-sm leading-relaxed max-w-xs">
@@ -153,8 +152,8 @@ const Footer = () => {
                   <MapPin size={20} className="text-[#D14D72] shrink-0 mt-1" />
                   <div>
                     <p className="text-sm group-hover:text-white transition-colors duration-300">
-                      123 Beauty Street, Glamour City,<br />
-                      Sector 25, Gurugram, Haryana 122002
+                    Shop No 4, Gajanan Fataka Bhandar,
+                  Science Score Ground, Rukmini Nagar, Vivekanand Colony, Amravati, Maharashtra
                     </p>
                   </div>
                 </div>
@@ -162,21 +161,16 @@ const Footer = () => {
                 <div className="flex gap-4 items-center group">
                   <Phone size={20} className="text-[#D14D72] shrink-0" />
                   <div>
-                    <a href="tel:+919876543210" className="text-sm group-hover:text-white transition-colors duration-300 block">
-                      +91 98765 43210
+                    <a href="tel:+918530375725" className="text-sm group-hover:text-white transition-colors duration-300 block">
+                      +91 8530375725
                     </a>
-                    <a href="tel:+911234567890" className="text-sm group-hover:text-white transition-colors duration-300 block">
+                    {/* <a href="tel:+911234567890" className="text-sm group-hover:text-white transition-colors duration-300 block">
                       +91 12345 67890
-                    </a>
+                    </a> */}
                   </div>
                 </div>
                 
-                <div className="flex gap-4 items-center group">
-                  <Mail size={20} className="text-[#D14D72] shrink-0" />
-                  <a href="mailto:info@glamourstudio.com" className="text-sm group-hover:text-white transition-colors duration-300">
-                    info@glamourstudio.com
-                  </a>
-                </div>
+              
                 
                 <div className="flex gap-4 group">
                   <div className="w-5 h-5 flex items-center justify-center">
@@ -194,39 +188,12 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Subscription */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="border-t border-gray-800 pt-8 mb-8"
-        >
-          <div className="max-w-md mx-auto text-center">
-            <h4 className="text-white text-lg font-bold mb-4">Stay Updated</h4>
-            <p className="text-sm text-gray-400 mb-6">
-              Subscribe to our newsletter for beauty tips, exclusive offers, and updates.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-[#D14D72]"
-              />
-              <button
-                type="submit"
-                className="bg-[#D14D72] text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-black transition-colors duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </motion.div>
+     
 
         {/* Copyright */}
         <div className="border-t border-gray-900 pt-8 text-center">
           <p className="text-xs tracking-widest uppercase text-gray-500 mb-2">
-            © {new Date().getFullYear()} Glamour Studio Beauty Parlor. All Rights Reserved.
+            © {new Date().getFullYear()} Aura Studio. All Rights Reserved.
           </p>
           <p className="text-xs text-gray-600 flex items-center justify-center gap-1">
             Designed with <Heart size={12} className="text-[#D14D72] fill-[#D14D72]" /> for beauty enthusiasts
@@ -245,6 +212,23 @@ const Footer = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
         </motion.button>
+         {/* WhatsApp Floating Button */}
+{/* WhatsApp Floating Button (Above Arrow) */}
+<motion.a
+  href="https://wa.me/918530375725"   // <-- replace with your number
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ y: -5 }}
+  whileTap={{ scale: 0.95 }}
+  className="fixed bottom-20 right-8 bg-green-500 text-white p-3 rounded-full shadow-xl hover:bg-green-600 transition-colors duration-300 z-40"
+  aria-label="Chat on WhatsApp"
+>
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.78 11.78 0 0012 .75a11.25 11.25 0 00-9.72 17.31L1 23l5.15-1.35A11.25 11.25 0 0012 23.25a11.78 11.78 0 008.52-3.48 11.62 11.62 0 000-16.29zM12 21a9.3 9.3 0 01-4.92-1.38l-.35-.21-3.06.8.82-2.99-.22-.31A9.3 9.3 0 1121.3 12 9.24 9.24 0 0112 21zm5-6.58c-.27-.14-1.61-.79-1.86-.88s-.43-.14-.61.14-.7.88-.86 1.06-.32.21-.59.07a7.52 7.52 0 01-2.23-1.37 8.38 8.38 0 01-1.55-1.93c-.16-.28 0-.43.12-.57s.28-.32.41-.48a1.9 1.9 0 00.28-.48.51.51 0 000-.48c-.07-.14-.61-1.46-.83-2-.22-.52-.44-.45-.61-.46h-.52a1 1 0 00-.73.34A3 3 0 007 9.13a5.17 5.17 0 00.21 2.2 11.71 11.71 0 003.06 4.57 13.23 13.23 0 004.83 3 5.38 5.38 0 002.48.16 2.39 2.39 0 001.56-1.09 1.93 1.93 0 00.14-1.13c-.06-.1-.24-.17-.51-.31z" />
+  </svg>
+</motion.a>
+
+
       </div>
     </footer>
   );
