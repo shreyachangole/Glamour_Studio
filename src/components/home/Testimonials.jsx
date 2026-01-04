@@ -1,107 +1,107 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SectionTitle from '../common/SectionTitle';
-import { testimonials } from '../../data/testimonials';
 
-const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const StatsOnly = () => {
+  const [counts, setCounts] = useState({
+    happyClients: 0,
+    servicesDone: 0,
+    expertStaff: 0,
+    yearsExperience: 0
+  });
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef(null);
 
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+  // Animation observer logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          const targetValues = {
+            happyClients: 100,
+            servicesDone: 200,
+            expertStaff: 5,
+            yearsExperience: 7
+          };
+
+          const duration = 1500; 
+          const interval = 20; 
+          const steps = duration / interval;
+          
+          Object.keys(targetValues).forEach(key => {
+            const target = targetValues[key];
+            const stepValue = target / steps;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+              current += stepValue;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              setCounts(prev => ({
+                ...prev,
+                [key]: Math.floor(current)
+              }));
+            }, interval);
+          });
+        }
+      },
+      { threshold: 0.3 } 
     );
-  };
 
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
+  const formatNumber = (num) => {
+    return num < 10 ? `0${num}` : `${num}`;
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-pink-50 to-purple-50">
+    <section className="py-16 bg-black">
       <div className="container mx-auto px-4">
         <SectionTitle 
-          title="What Our Clients Say"
-          subtitle="Testimonials"
+          title="Our Achievements" 
+          subtitle="By The Numbers" 
         />
         
-        <div className="max-w-4xl mx-auto relative">
-          <div className="bg-white rounded-xl shadow-2xl p-8 md:p-12">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-              <img 
-                src={testimonials[activeIndex].image} 
-                alt={testimonials[activeIndex].name}
-                className="w-24 h-24 rounded-full object-cover border-4 border-pink-100"
-              />
-              
-              <div className="flex-grow">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <i 
-                      key={i} 
-                      className={`fas fa-star ${i < testimonials[activeIndex].rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                    ></i>
-                  ))}
-                </div>
-                
-                <p className="text-gray-600 text-lg italic mb-6">
-                  "{testimonials[activeIndex].content}"
-                </p>
-                
-                <div>
-                  <h4 className="font-bold text-xl">{testimonials[activeIndex].name}</h4>
-                  <p className="text-pink-600">{testimonials[activeIndex].role}</p>
-                </div>
-              </div>
+        {/* Stats Section with Animation */}
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+          <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-3xl font-bold text-pink-600">
+              {formatNumber(counts.happyClients)}+
             </div>
+            <div className="text-gray-600 mt-2 font-medium">Happy Clients</div>
           </div>
-          
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <i className="fas fa-chevron-left text-pink-600"></i>
-          </button>
-          
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <i className="fas fa-chevron-right text-pink-600"></i>
-          </button>
-          
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-pink-600' : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+
+          <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-3xl font-bold text-pink-600">
+              {formatNumber(counts.servicesDone)}+
+            </div>
+            <div className="text-gray-600 mt-2 font-medium">Services Done</div>
           </div>
-        </div>
-        
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-            <div className="text-3xl font-bold text-pink-600">500+</div>
-            <div className="text-gray-600 mt-2">Happy Clients</div>
+
+          <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-3xl font-bold text-pink-600">
+              {formatNumber(counts.expertStaff)}+
+            </div>
+            <div className="text-gray-600 mt-2 font-medium">Expert Staff</div>
           </div>
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-            <div className="text-3xl font-bold text-pink-600">1000+</div>
-            <div className="text-gray-600 mt-2">Services Done</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-            <div className="text-3xl font-bold text-pink-600">50+</div>
-            <div className="text-gray-600 mt-2">Expert Staff</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-            <div className="text-3xl font-bold text-pink-600">15+</div>
-            <div className="text-gray-600 mt-2">Years Experience</div>
+
+          <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-3xl font-bold text-pink-600">
+              {formatNumber(counts.yearsExperience)}+
+            </div>
+            <div className="text-gray-600 mt-2 font-medium">Years Experience</div>
           </div>
         </div>
       </div>
@@ -109,4 +109,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default StatsOnly;

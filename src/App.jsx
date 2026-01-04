@@ -35,23 +35,7 @@ function App() {
         </main>
         <Footer />
         
-        {/* Floating WhatsApp Button */}
-        {/* <a 
-          href="https://wa.me/1234567890"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="whatsapp-button"
-        >
-          <i className="bg-[#25D366] p-4 block rounded-full shadow-xl cursor-pointer hover:scale-110 transition-transform active:scale-95 group relative"></i>
-        </a> */}
-        
-        {/* Back to Top Button */}
-        {/* <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="back-to-top"
-        >
-          <i className="fas fa-arrow-up"></i>
-        </button> */}
+     
       </div>
     </BrowserRouter>
   );

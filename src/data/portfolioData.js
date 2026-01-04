@@ -1,58 +1,111 @@
+import img1 from '../assets/Gallery/1.png'
+import img2 from '../assets/Gallery/2.png'
+import img3 from '../assets/Gallery/3.png'
+import img4 from '../assets/Gallery/4.png'
+import img5 from '../assets/Gallery/5.png'
+import img6 from '../assets/Gallery/6.png'
+import img7 from '../assets/Gallery/7.png'
+import img8 from '../assets/Gallery/8.png'
+import img9 from '../assets/Gallery/9.png'
+import img10 from '../assets/Gallery/10.png'
+import img11 from '../assets/Gallery/11.png'
+import img12 from '../assets/Gallery/12.png'
+import img13 from '../assets/Gallery/13.png'
+
+
+
 export const portfolioData = [
   {
     id: 1,
     title: 'Bridal Makeup & Hair',
     category: 'bridal',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800',
+    image: img1,
     description: 'Complete bridal look for summer wedding'
   },
   {
     id: 2,
     title: 'Hair Color Transformation',
     category: 'hair',
-    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w-800',
+    image: img2,
     description: 'Balayage highlights with keratin treatment'
   },
   {
     id: 3,
     title: 'Evening Party Makeup',
     category: 'makeup',
-    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800',
+    image: img3,
     description: 'Glamorous makeup for gala night'
   },
   {
     id: 4,
     title: 'Creative Nail Art',
     category: 'nails',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800',
+    image: img4,
     description: 'Custom nail art design with crystals'
   },
   {
     id: 5,
     title: 'Facial Rejuvenation',
     category: 'facial',
-    image: 'https://images.unsplash.com/photo-1540555700478-403beaf8b4b4?w=800',
+    image: img5,
     description: 'Gold facial treatment for radiant skin'
   },
   {
     id: 6,
     title: 'Mehndi Design',
     category: 'bridal',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800',
+    image: img6,
     description: 'Intricate henna designs for wedding'
   },
   {
     id: 7,
     title: 'Hair Styling Session',
     category: 'hair',
-    image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800',
+    image:img7,
     description: 'Professional styling for photo shoot'
   },
   {
     id: 8,
     title: 'Makeup Tutorial',
     category: 'makeup',
-    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800',
+    image:img8,
     description: 'Step-by-step makeup application'
-  }
+  },
+    {
+    id: 9,
+    title: 'Makeup Tutorial',
+    category: 'makeup',
+    image:img9,
+    description: 'Step-by-step makeup application'
+  },
+    {
+    id: 10,
+    title: 'Makeup Tutorial',
+    category: 'makeup',
+    image:img10,
+    description: 'Step-by-step makeup application'
+  },
+    {
+    id: 11,
+    title: 'Makeup Tutorial',
+    category: 'makeup',
+    image:img11,
+    description: 'Step-by-step makeup application'
+  },
+    {
+    id: 12,
+    title: 'Makeup Tutorial',
+    category: 'makeup',
+    image:img12,
+    description: 'Step-by-step makeup application'
+  },
+    {
+    id: 13,
+    title: 'Makeup Tutorial',
+    category: 'makeup',
+    image:img13,
+    description: 'Step-by-step makeup application'
+  },
+   
+
 ];

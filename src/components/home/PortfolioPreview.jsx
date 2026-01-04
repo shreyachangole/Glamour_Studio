@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star, Heart, ChevronRight, Sparkles, Instagram, Camera } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import img1 from '../../assets/portfolio_section/1.png'
+import img2 from '../../assets/portfolio_section/2.png'
+import img3 from '../../assets/portfolio_section/3.png'
+import img4 from '../../assets/portfolio_section/4.png'
 const PortfolioPreview = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const navigate = useNavigate();
@@ -16,7 +19,7 @@ const PortfolioPreview = () => {
       description: 'Traditional heavy gold glam with a focus on HD skin finish and bold crimson lips.',
       rating: 5,
       // Matches: Traditional South Asian Bride with heavy jewelry and red tones
-      image: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=1200&q=80',
+      image: img1,
       featured: true,
       client: 'Zara Ahmed'
     },
@@ -27,7 +30,7 @@ const PortfolioPreview = () => {
       description: 'A sultry, smoked-out wing paired with a velvet matte nude palette for gala events.',
       rating: 5,
       // Matches: High-end evening makeup/gala style
-      image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1200&q=80',
+      image: img2,
       client: 'Serena Williams'
     },
     {
@@ -37,7 +40,7 @@ const PortfolioPreview = () => {
       description: 'Hyper-minimalist makeup focusing on light reflection and dewy textures for fashion print.',
       rating: 5,
       // Matches: Editorial "no-makeup" high-fashion dewy look
-      image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+      image:img3,
       featured: true,
       client: 'Luxe Magazine'
     },
@@ -48,17 +51,12 @@ const PortfolioPreview = () => {
       description: 'The "no-makeup" bridal look: Soft peach tones and individual lash enhancement.',
       rating: 5,
       // Matches: Soft, minimalist, western-style bridal glow
-      image: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=1200&q=80',
+      image:img4,
       client: 'Elena Rossi'
     },
   ];
 
-  const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'bridal', label: 'Bridal Couture' },
-    { id: 'party', label: 'Evening Glam' },
-    { id: 'makeup', label: 'Editorial' },
-  ];
+
 
   const filteredProjects = activeCategory === 'all'
     ? portfolioData
@@ -91,7 +89,7 @@ const PortfolioPreview = () => {
           </motion.div>
 
           {/* Luxury Category Filter */}
-          <div className="flex flex-wrap gap-3">
+          {/* <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -105,7 +103,7 @@ const PortfolioPreview = () => {
                 {category.label}
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Dynamic Portfolio Grid */}
@@ -188,7 +186,7 @@ const PortfolioPreview = () => {
           <div className="mt-12 flex items-center gap-6 grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             <Instagram className="w-5 h-5 cursor-pointer" />
             <span className="h-4 w-[1px] bg-white/20"></span>
-            <p className="text-gray-500 text-[9px] uppercase tracking-[0.3em]">Follow the journey @artistry_studio</p>
+            <p className="text-gray-500 text-[9px] uppercase tracking-[0.3em]">Follow the journey @aura_unisex_salon_amravati</p>
           </div>
         </motion.div>
       </div>
