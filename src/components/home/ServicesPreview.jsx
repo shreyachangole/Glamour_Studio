@@ -141,7 +141,7 @@ const ServicesPreview = () => {
 
                   <div className="pt-6">
                     <Link
-                      to={`/services/${service.id}`}
+                      to={`/services`}
                       className="inline-block px-8 py-4 bg-rose-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-rose-700 transition-all"
                     >
                       Book Now

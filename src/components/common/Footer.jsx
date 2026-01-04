@@ -51,7 +51,7 @@ const Footer = () => {
                 </div>
                 <h2 className="text-white text-2xl font-bold tracking-wider font-sans">
                  
-Aura Studio
+Aura Unisex Salon
                 </h2>
               </div>
               <p className="text-sm leading-relaxed max-w-xs">
