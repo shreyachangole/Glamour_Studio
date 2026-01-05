@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../components/common/SectionTitle';
 import Button from '../components/common/Button';
 
 const Academy = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const courses = [

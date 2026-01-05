@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Phone, 
   Clock, 
@@ -10,6 +10,9 @@ import {
 } from 'lucide-react';
 
 const Contact = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },);
   const [formData, setFormData] = useState({
     name: '',
     email: '',

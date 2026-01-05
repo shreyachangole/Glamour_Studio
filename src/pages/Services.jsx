@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ServiceCard from "../components/services/ServiceCard";
 import { servicesData } from "../data/servicesData";
 import { Link } from "react-router-dom";
 
 const Services = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const serviceCategories = [

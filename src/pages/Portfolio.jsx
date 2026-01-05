@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { portfolioData } from '../data/portfolioData';
 
 const Portfolio = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [Portfolio]);
   const [filteredProjects, setFilteredProjects] = useState(portfolioData);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);

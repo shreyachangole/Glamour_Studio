@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 
 const NotFound = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },);
   return (
     <div className="not-found-page min-h-screen flex items-center justify-center bg-gradient-to-br from-beauty-pink-50 to-beauty-purple-50">
       <div className="container mx-auto px-4">

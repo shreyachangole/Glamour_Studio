@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Clock, ShieldCheck } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 
 const LuxeCard = ({ service }) => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}

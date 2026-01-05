@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SectionTitle from '../components/common/SectionTitle';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
 import img from  '../assets/Hero_section/image2.png'
+
 const About = () => {
+    useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },);
+
+
+
+
+
   const teamMembers = [
     {
       name: 'Sophia Johnson',
